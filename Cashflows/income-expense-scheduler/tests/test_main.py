@@ -15,7 +15,7 @@ class TestMain(unittest.TestCase):
     @patch('sys.argv', ['main.py', 'input.json', 'scenarios.json'])
     def test_main(self, mock_json_load, mock_open):
         mock_json_load.side_effect = [
-            json.loads('{"initial_portfolio_value": 100000, "end_analysis_year": 2050, "retirement_year": 2030, "pre_retirement_tax": 0.25, "post_retirement_tax": 0.15, "equity_allocation": 0.6, "fixed_income_allocation": 0.4, "lifestyle_expenses": 30000, "data": [{"years": "2023-2025", "savings": 20000, "withdrawals": 10000, "post_tax": true}]}'),
+            json.loads('{"initial_portfolio_value": 100000, "end_analysis_year": 2026, "retirement_year": 2030, "pre_retirement_tax": 0.25, "post_retirement_tax": 0.15, "equity_allocation": 0.6, "fixed_income_allocation": 0.4, "lifestyle_expenses": 30000, "data": [{"years": "2023-2025", "savings": 20000, "withdrawals": 10000, "post_tax": true}]}'),
             json.loads('[{"scenario_id": 1, "years": [{"year": 2024, "equity_return": 0.1, "fixed_income_return": 0.05}, {"year": 2025, "equity_return": 0.1, "fixed_income_return": 0.05}, {"year": 2026, "equity_return": 0.1, "fixed_income_return": 0.05}]}]')
         ]
         with patch('builtins.print') as mock_print:
