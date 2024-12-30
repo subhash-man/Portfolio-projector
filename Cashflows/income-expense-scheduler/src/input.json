@@ -1,0 +1,5 @@
+[
+    {"years": "2023-2025", "income": 50000, "expenses": 30000, "post_tax": false},
+    {"years": "2026", "income": 55000, "expenses": 32000, "post_tax": true},
+    {"years": "2027-2028", "income": 60000, "expenses": 35000}
+]
