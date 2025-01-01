@@ -26,15 +26,14 @@ def main(input_file, scenarios_file):
         scenario_id = scenario['scenario_id']
         scenario_years = {item['year']: item for item in scenario['years']}
         financial_data_dict_copy = copy.deepcopy(financial_data_dict)
-        financial_data_dict_copy, scenario_failed = apply_scenario(financial_data_dict_copy, scenario_years, input_data)
-        status = "failed" if scenario_failed else "succeeded"
-        print(f"Scenario {scenario_id} {status}")
-
-        # Update counters
+        financial_data_dict_copy, scenario_failed, failed_year = apply_scenario(financial_data_dict_copy, scenario_years, input_data)
         if scenario_failed:
+            status = f"failed in year {failed_year}"
             failed_count += 1
         else:
+            status = "succeeded"
             succeeded_count += 1
+        print(f"Scenario {scenario_id} {status}")
 
     # Print the summary of succeeded vs failed scenarios
     print(f"Total scenarios: {len(scenarios_data)}")
@@ -46,10 +45,4 @@ def main(input_file, scenarios_file):
     # print(output_json)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python main.py <input_file> <scenarios_file>")
-        sys.exit(1)
-    
-    input_file = sys.argv[1]
-    scenarios_file = sys.argv[2]
-    main(input_file, scenarios_file)
+    main(sys.argv[1], sys.argv[2])

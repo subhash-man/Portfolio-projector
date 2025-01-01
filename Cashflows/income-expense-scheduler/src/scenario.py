@@ -13,6 +13,7 @@ def apply_scenario(financial_data_dict, scenario_data, input_data):
 
     previous_year_portfolio_value = initial_portfolio_value
     scenario_failed = False
+    failed_year = None
 
     for year in range(datetime.now().year, end_analysis_year + 1):
         if year not in financial_data_dict:
@@ -28,6 +29,7 @@ def apply_scenario(financial_data_dict, scenario_data, input_data):
         if fd.portfolio_value < 0:
             fd.scenario_failed = True
             scenario_failed = True
+            failed_year = year
             break
 
         if year in scenario_data:
@@ -45,4 +47,4 @@ def apply_scenario(financial_data_dict, scenario_data, input_data):
 
         previous_year_portfolio_value = fd.portfolio_value
 
-    return financial_data_dict, scenario_failed
+    return financial_data_dict, scenario_failed, failed_year
