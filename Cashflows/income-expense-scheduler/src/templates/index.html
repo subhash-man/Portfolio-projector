@@ -4,38 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Scenario Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-group input, .form-group textarea {
+            flex: 2;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group input[type="submit"] {
+            flex: 0;
+            margin-left: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enter Financial Scenario Input</h1>
-    <form action="{{ url_for('submit') }}" method="post">
-        <label for="initial_portfolio_value">Initial Portfolio Value:</label>
-        <input type="number" id="initial_portfolio_value" name="initial_portfolio_value" step="0.01" required><br><br>
+    <div class="form-container">
+        <h1>Enter Financial Scenario Input</h1>
+        <form action="{{ url_for('submit') }}" method="post">
+            <div class="form-group">
+                <label for="initial_portfolio_value">Initial Portfolio Value:</label>
+                <input type="number" id="initial_portfolio_value" name="initial_portfolio_value" step="0.01" required>
+            </div>
 
-        <label for="retirement_year">Retirement Year:</label>
-        <input type="number" id="retirement_year" name="retirement_year" required><br><br>
+            <div class="form-group">
+                <label for="retirement_year">Retirement Year:</label>
+                <input type="number" id="retirement_year" name="retirement_year" required>
+            </div>
 
-        <label for="pre_retirement_tax">Pre-Retirement Tax Rate:</label>
-        <input type="number" id="pre_retirement_tax" name="pre_retirement_tax" step="0.01" required><br><br>
+            <div class="form-group">
+                <label for="pre_retirement_tax">Pre-Retirement Tax Rate (fractional, e.g., 0.1 for 10%):</label>
+                <input type="number" id="pre_retirement_tax" name="pre_retirement_tax" step="0.01" required>
+            </div>
 
-        <label for="post_retirement_tax">Post-Retirement Tax Rate:</label>
-        <input type="number" id="post_retirement_tax" name="post_retirement_tax" step="0.01" required><br><br>
+            <div class="form-group">
+                <label for="post_retirement_tax">Post-Retirement Tax Rate (fractional, e.g., 0.05 for 5%):</label>
+                <input type="number" id="post_retirement_tax" name="post_retirement_tax" step="0.01" required>
+            </div>
 
-        <label for="equity_allocation">Equity Allocation:</label>
-        <input type="number" id="equity_allocation" name="equity_allocation" step="0.01" required><br><br>
+            <div class="form-group">
+                <label for="equity_allocation">Equity Allocation (fractional, e.g., 0.3 for 30%):</label>
+                <input type="number" id="equity_allocation" name="equity_allocation" step="0.01" required>
+            </div>
 
-        <label for="fixed_income_allocation">Fixed Income Allocation:</label>
-        <input type="number" id="fixed_income_allocation" name="fixed_income_allocation" step="0.01" required><br><br>
+            <div class="form-group">
+                <label for="fixed_income_allocation">Fixed Income Allocation (fractional, e.g., 0.7 for 70%):</label>
+                <input type="number" id="fixed_income_allocation" name="fixed_income_allocation" step="0.01" required>
+            </div>
 
-        <label for="lifestyle_expenses">Lifestyle Expenses:</label>
-        <input type="number" id="lifestyle_expenses" name="lifestyle_expenses" step="0.01" required><br><br>
+            <div class="form-group">
+                <label for="lifestyle_expenses">Lifestyle Expenses:</label>
+                <input type="number" id="lifestyle_expenses" name="lifestyle_expenses" step="0.01" required>
+            </div>
 
-        <label for="end_analysis_year">End Analysis Year:</label>
-        <input type="number" id="end_analysis_year" name="end_analysis_year" required><br><br>
+            <div class="form-group">
+                <label for="end_analysis_year">End Analysis Year:</label>
+                <input type="number" id="end_analysis_year" name="end_analysis_year" required>
+            </div>
 
-        <label for="data">Data (JSON format):</label><br>
-        <textarea id="data" name="data" rows="10" cols="50" required></textarea><br><br>
+            <div class="form-group">
+                <label for="data">Cashflow Data (JSON format):</label>
+                <textarea id="data" name="data" rows="10" cols="50" required></textarea>
+            </div>
 
-        <input type="submit" value="Submit">
-    </form>
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

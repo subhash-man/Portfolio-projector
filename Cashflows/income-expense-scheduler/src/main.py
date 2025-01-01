@@ -44,7 +44,7 @@ def main(input_file, scenarios_file):
     # output_json = internal_to_json(list(financial_data_dict_copy.values()))
     # print(output_json)
 
-    return f"Succeeded: {succeeded_count} and Failed: {failed_count} out of Total {len(scenarios_data)} scenarios"
+    return f"Succeeded: {succeeded_count}, Failed: {failed_count} out of Total {len(scenarios_data)} scenarios"
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2])
