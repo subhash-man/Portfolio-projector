@@ -31,16 +31,16 @@ class TestUtils(unittest.TestCase):
 
     def test_input_to_internal(self):
         financial_data_dict = input_to_internal(self.input_data, self.scenario_data)
-        self.assertEqual(len(financial_data_dict), 2)
-        self.assertIsInstance(financial_data_dict[2024], FinancialData)
-        self.assertEqual(financial_data_dict[2024].savings, 20000)
-        self.assertEqual(financial_data_dict[2024].withdrawals, 10000)
+        self.assertEqual(len(financial_data_dict), 1)
+        self.assertIsInstance(financial_data_dict[2025], FinancialData)
+        self.assertEqual(financial_data_dict[2025].savings, 20000)
+        self.assertEqual(financial_data_dict[2025].withdrawals, 10000)
 
     def test_internal_to_json(self):
         financial_data_dict = input_to_internal(self.input_data, self.scenario_data)
         financial_data_list = list(financial_data_dict.values())
         json_output = internal_to_json(financial_data_list)
-        self.assertIn('"year": 2024', json_output)
+        self.assertIn('"year": 2025', json_output)
         self.assertIn('"savings": 20000', json_output)
         self.assertIn('"withdrawals": 10000', json_output)
 

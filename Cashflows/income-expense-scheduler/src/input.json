@@ -1,5 +1,19 @@
-[
-    {"years": "2023-2025", "income": 50000, "expenses": 30000, "post_tax": false},
-    {"years": "2026", "income": 55000, "expenses": 32000, "post_tax": true},
-    {"years": "2027-2028", "income": 60000, "expenses": 35000}
-]
+{
+    "initial_portfolio_value": 400000,
+    "retirement_year": 2030,
+    "pre_retirement_tax": 0.1,
+    "post_retirement_tax": 0.05,
+    "equity_allocation": 0.3, 
+    "fixed_income_allocation": 0.7,
+    "lifestyle_expenses": 30000,
+    "end_analysis_year": 2055,
+    "data": [
+        {"years": "2023-2025", "savings": 10000, "withdrawals": 3000, "post_tax": false},
+        {"years": "2024-2026", "savings": 5000, "withdrawals": 3200, "post_tax": true},
+        {"years": "2025-2027", "savings": 4000, "withdrawals": 3500},
+        {"years": "2026-2028", "savings": 7500, "withdrawals": 3700, "post_tax": false},
+        {"years": "2027-2029", "savings": 7000, "withdrawals": 4000, "post_tax": true},
+        {"years": "2028-2030", "savings": 8000, "withdrawals": 4200, "post_tax": false},
+        {"years": "2029-2031", "savings": 6000, "withdrawals": 4500, "post_tax": true}
+    ]
+}

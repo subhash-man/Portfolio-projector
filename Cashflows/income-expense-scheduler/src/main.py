@@ -28,7 +28,7 @@ def main(input_file, scenarios_file):
         financial_data_dict_copy = copy.deepcopy(financial_data_dict)
         financial_data_dict_copy, scenario_failed = apply_scenario(financial_data_dict_copy, scenario_years, input_data)
         status = "failed" if scenario_failed else "succeeded"
-        print(f"Scenario {scenario_id} {status}")
+        #print(f"Scenario {scenario_id} {status}")
 
         # Update counters
         if scenario_failed:
