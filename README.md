@@ -1,25 +1,43 @@
-# Income Expense Scheduler
+## Project Summary
+This project is a financial analysis tool designed to simulate and evaluate different financial scenarios for a given portfolio. The tool processes input data related to a user's financial situation, including savings, expenses, tax rates, and portfolio allocations. It then applies various scenarios to this data to determine the potential outcomes and identify any years where the portfolio might fail (i.e., run out of funds).
 
-This project is designed to simulate financial scenarios based on input data and various financial parameters. It calculates the financial outcomes for different scenarios and provides a summary of the results.
+## Key Components
+- Input Data Processing (input_to_internal function in utils.py):
 
-## Project Structure
+  - `Allocations Validation`: Ensures that the sum of equity and fixed income allocations is exactly 100%.
+  - `Data Transformation`: Converts input data into an internal data structure for further processing.
+  - `Savings and Expenses Handling`: Zeroes out savings if the user is retired and adds lifestyle expenses to withdrawals only once per year.
 
-income-expense-scheduler/ 
-│ ├── src/ 
-  │ ├── main.py 
-  │ ├── utils.py 
-  │ ├── scenario.py 
-  │ ├── financialdata.py 
-  │ └── savings.py 
-  │ ├── tests/ 
-  │ ├── test_main.py 
-  │ └── test_utils.py 
-  │ ├── test/ 
-  │ ├── input.json 
-  │ └── scenarios.json 
-  │ └── README.md
+- Scenario Application (apply_scenario function in scenario.py):
 
-  ## Files and Directories
+  - `Initial Setup`: Initializes the financial data dictionary with the input data.
+  - `Yearly Processing`: Iterates through each year, updating the portfolio value based on savings, withdrawals, and returns from equity and fixed income investments.
+  - `Failure Detection`: Checks if the portfolio value becomes negative in any year, marking the scenario as failed and recording the year of failure.
+
+- Main Execution (main function in main.py):
+
+  - `Input Reading`: Reads input data and scenarios from specified files.
+  - `Scenario Execution`: Applies each scenario to the financial data and prints the result, including the year of failure if applicable.
+  - `Summary Printing`: Outputs a summary of the total number of scenarios, and how many succeeded or failed.
+
+- Salient Points
+  - `Savings`: Savings are zeroed out if the user is retired, as it is assumed that no further savings will be made post-retirement.
+  - `Expenses`: Lifestyle expenses are added to withdrawals only once per year to account for the user's cost of living.
+  - `Tax Rate`: The tax rate applied to the portfolio depends on whether the user is pre-retirement or post-retirement.
+  - `Portfolio Allocation`: The tool ensures that the total allocation of equity and fixed income investments is 100%.
+  - `Scenario Goals`: The primary goal of running multiple scenarios is to evaluate the robustness of the portfolio under different conditions and identify any potential years of failure.
+
+- Example Usage
+To run the tool, execute the main.py script with the input file and scenarios file as arguments:
+
+```
+python main.py input.json scenarios.json
+```
+
+This will process the input data, apply each scenario, and print the results along with a summary of the scenario outcomes.
+
+
+## Files and Directories
 
 - `src/`: Contains the source code for the project.
   - `main.py`: The main script to run the financial simulations.
