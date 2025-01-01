@@ -20,6 +20,13 @@ def input_to_internal(input_data, scenario_data):
     lifestyle_expenses = input_data['lifestyle_expenses']
     data = input_data['data']
 
+    # Validate allocations
+    equity_allocation = input_data.get('equity_allocation', 0)
+    fixed_income_allocation = input_data.get('fixed_income_allocation', 0)
+    total_allocation = equity_allocation + fixed_income_allocation
+    if total_allocation != 1:
+        raise ValueError("Total allocation of equity and fixed income must be 100%")
+
     for item in data:
         years = item['years']
         if '-' in years:
