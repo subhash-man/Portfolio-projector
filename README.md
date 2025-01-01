@@ -1,5 +1,5 @@
 ## Project Summary
-This project is a financial analysis tool designed to simulate and evaluate different financial scenarios for a given portfolio. The tool processes input data related to a user's financial situation, including savings, expenses, tax rates, and portfolio allocations. It then applies various scenarios to this data to determine the potential outcomes and identify any years where the portfolio might fail (i.e., run out of funds).
+This project is a financial analysis tool designed to simulate and evaluate different financial scenarios for a given portfolio. The tool processes input data related to a user's financial situation, including savings, expenses, tax rates, and portfolio allocations. It then applies various scenarios to this data to determine the potential outcomes and identify any years where the portfolio might fail (i.e., run out of funds). The project currently assumes the same equity/fixed income allocation for each year and ignores the drift/rebalance that may happen each year.
 
 ## Key Components
 - Input Data Processing (input_to_internal function in utils.py):
