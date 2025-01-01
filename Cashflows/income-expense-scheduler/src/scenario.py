@@ -25,8 +25,9 @@ def apply_scenario(financial_data_dict, scenario_data, input_data):
             # Initialize financial data for the year
             financial_data_dict[year] = FinancialData(year, 0, 0, 0, retired, tax_rate, initial_portfolio_value, 0, 0, 0)
             # Add lifestyle expenses to withdrawals if the user is retired
-            if retired:
+            if retired and not financial_data_dict[year].lifestyle_expenses_added:
                 financial_data_dict[year].withdrawals += lifestyle_expenses
+                financial_data_dict[year].lifestyle_expenses_added = True
 
         fd = financial_data_dict[year]
         # Calculate the portfolio value for the year

@@ -27,6 +27,16 @@ def input_to_internal(input_data, scenario_data):
     if total_allocation != 1:
         raise ValueError("Total allocation of equity and fixed income must be 100%")
 
+    # Check for negative or zero values
+    if initial_portfolio_value <= 0:
+        raise ValueError("Initial portfolio value must be greater than zero")
+    if pre_retirement_tax < 0 or post_retirement_tax < 0:
+        raise ValueError("Tax rates must be non-negative")
+    if equity_allocation < 0 or fixed_income_allocation < 0:
+        raise ValueError("Allocations must be non-negative")
+    if lifestyle_expenses < 0:
+        raise ValueError("Lifestyle expenses must be non-negative")
+
     for item in data:
         years = item['years']
         if '-' in years:
