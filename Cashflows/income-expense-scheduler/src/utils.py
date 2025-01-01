@@ -30,11 +30,13 @@ def input_to_internal(input_data, scenario_data):
     for item in data:
         years = item['years']
         if '-' in years:
+            # Handle range of years
             start_year, end_year = map(int, years.split('-'))
             for year in range(start_year, end_year + 1):
                 if current_year <= year <= end_analysis_year:
                     tax_rate = pre_retirement_tax if year < retirement_year else post_retirement_tax
                     retired = year >= retirement_year
+                    # Zero out savings if retired
                     savings = 0 if retired else item['savings']
                     savings, tax_paid = Savings.calculate_post_tax_savings(savings, item.get('post_tax', True), tax_rate, return_tax=True)
                     if year not in financial_data_dict:
@@ -43,14 +45,17 @@ def input_to_internal(input_data, scenario_data):
                     fd.savings += savings
                     fd.withdrawals += item['withdrawals']
                     fd.tax_paid += tax_paid
+                    # Add lifestyle expenses to withdrawals only once per year
                     if retired and not fd.lifestyle_expenses_added:
                         fd.withdrawals += lifestyle_expenses
                         fd.lifestyle_expenses_added = True
         else:
+            # Handle single year
             year = int(years)
             if current_year <= year <= end_analysis_year:
                 tax_rate = pre_retirement_tax if year < retirement_year else post_retirement_tax
                 retired = year >= retirement_year
+                # Zero out savings if retired
                 savings = 0 if retired else item['savings']
                 savings, tax_paid = Savings.calculate_post_tax_savings(savings, item.get('post_tax', True), tax_rate, return_tax=True)
                 if year not in financial_data_dict:
@@ -59,6 +64,7 @@ def input_to_internal(input_data, scenario_data):
                 fd.savings += savings
                 fd.withdrawals += item['withdrawals']
                 fd.tax_paid += tax_paid
+                # Add lifestyle expenses to withdrawals only once per year
                 if retired and not fd.lifestyle_expenses_added:
                     fd.withdrawals += lifestyle_expenses
                     fd.lifestyle_expenses_added = True
