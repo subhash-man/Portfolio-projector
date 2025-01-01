@@ -21,6 +21,9 @@ def main(input_file, scenarios_file):
     succeeded_count = 0
     failed_count = 0
 
+    # Initialize a list to store the summary strings
+    summary_lines = []
+
     # Apply each scenario and print the result
     for scenario in scenarios_data:
         scenario_id = scenario['scenario_id']
@@ -35,14 +38,22 @@ def main(input_file, scenarios_file):
             succeeded_count += 1
         print(f"Scenario {scenario_id} {status}")
 
-    # Print the summary of succeeded vs failed scenarios
-    print(f"Total scenarios: {len(scenarios_data)}")
-    print(f"Succeeded: {succeeded_count}")
-    print(f"Failed: {failed_count}")
+    # Add the summary of succeeded vs failed scenarios
+    summary_lines.append(f"Total scenarios: {len(scenarios_data)}")
+    summary_lines.append(f"Succeeded: {succeeded_count}")
+    summary_lines.append(f"Failed: {failed_count}")
+
+    # Join the summary lines into a single string
+    print_string = "\n".join(summary_lines)
+    summary_string = "<br>".join(summary_lines)
+
+    # Print the summary string
+    print(print_string)
 
     # Print the output JSON for the last scenario
     # output_json = internal_to_json(list(financial_data_dict_copy.values()))
     # print(output_json)
+    return summary_string
 
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2])
