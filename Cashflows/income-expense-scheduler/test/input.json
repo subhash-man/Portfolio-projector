@@ -5,7 +5,7 @@
     "post_retirement_tax": 0.05,
     "equity_allocation": 0.3, 
     "fixed_income_allocation": 0.7,
-    "lifestyle_expenses": 25000,
+    "lifestyle_expenses": 35000,
     "end_analysis_year": 2055,
     "data": [
         {"years": "2023-2025", "savings": 10000, "withdrawals": 3000, "post_tax": false},
@@ -14,6 +14,7 @@
         {"years": "2026-2028", "savings": 7500, "withdrawals": 3700, "post_tax": false},
         {"years": "2027-2029", "savings": 7000, "withdrawals": 4000, "post_tax": true},
         {"years": "2028-2030", "savings": 8000, "withdrawals": 4200, "post_tax": false},
-        {"years": "2029-2031", "savings": 6000, "withdrawals": 4500, "post_tax": true}
+        {"years": "2029-2031", "savings": 6000, "withdrawals": 4500, "post_tax": true},
+        {"years": "2029", "savings": 250000, "withdrawals": 0, "post_tax": true}
     ]
 }
