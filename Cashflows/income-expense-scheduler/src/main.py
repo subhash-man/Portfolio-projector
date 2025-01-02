@@ -5,10 +5,11 @@ from utils import input_to_internal, internal_to_json
 from scenario import apply_scenario
 from financialdata import FinancialData
 
-def main(input_file, scenarios_file):
-    # Read input from the specified input file
-    with open(input_file, 'r') as file:
-        input_data = json.load(file)
+def main(input_data=None, scenarios_file=None, read_from_file=True):
+    if read_from_file:
+        # Read input from the specified input file
+        with open(input_data, 'r') as file:
+            input_data = json.load(file)
 
     # Read scenarios data from the specified scenarios file
     with open(scenarios_file, 'r') as file:

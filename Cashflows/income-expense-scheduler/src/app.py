@@ -23,10 +23,10 @@ def submit():
         "data": json.loads(request.form['data'])
     }
 
-    with open('temp\input.json', 'w') as f:
-        json.dump(input_data, f, indent=4)
+    # Call the main function with the internal data structure
+    summary = main(input_data=input_data, scenarios_file='src/scenarios.json', read_from_file=False)
 
-    return main(input_file='temp\input.json', scenarios_file='src\scenarios.json')  # Call the main function
+    return summary
 
 if __name__ == '__main__':
     app.run(debug=True)
